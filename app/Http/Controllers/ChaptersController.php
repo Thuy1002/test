@@ -3,18 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chapters;
+use App\Models\Courses;
 use Illuminate\Http\Request;
 
 class ChaptersController extends Controller
 {
+    private $v;
+
+    public function __construct()
+    {
+        $this->v = [];
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
         //
+        $this->v['chapters'] = Chapters::where('status','!=' ,0)->get();
+
+        return view('chapters.index', $this->v);
+
     }
 
     /**
@@ -76,10 +88,12 @@ class ChaptersController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Chapters  $chapters
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Chapters $chapters)
+        public function destroy($id)
     {
-        //
+        $model = new Chapters();
+        $res = $model->Xoa($id);
+        return redirect()->back();
     }
 }

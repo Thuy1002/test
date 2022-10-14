@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ChaptersController;
 use App\Http\Controllers\CoursesController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//Route::resource('/courses', CoursesController::class);
-Route::get('/courses', 'CoursesController@index')->name('index');
-Route::get('/courses/delete/{id}', 'CoursesController@destroy')->name('xoa');
+Route::resource('/courses', CoursesController::class);
+Route::resource('/chapters', ChaptersController::class);
+
+
+//Route::get('/courses', 'CoursesController@index')->name('index');
+//Route::get('/courses/delete/{id}', 'CoursesController@destroy')->name('xoa');

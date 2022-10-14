@@ -8,17 +8,25 @@ use Illuminate\Support\Facades\Session;
 
 class CoursesController extends Controller
 {
+
+    private $v;
+
+    public function __construct()
+    {
+        $this->v = [];
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
         //
-        $courses = Courses::latest()->get();
+        $this->v['courses'] = Courses::where('status','!=' ,0)->get();
 
-        return view('courses.index',compact('courses'));
+        return view('courses.index', $this->v);
     }
 
     /**
@@ -34,7 +42,7 @@ class CoursesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -45,7 +53,7 @@ class CoursesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Courses  $courses
+     * @param \App\Models\Courses $courses
      * @return \Illuminate\Http\Response
      */
     public function show(Courses $courses)
@@ -56,7 +64,7 @@ class CoursesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Courses  $courses
+     * @param \App\Models\Courses $courses
      * @return \Illuminate\Http\Response
      */
     public function edit(Courses $courses)
@@ -67,8 +75,8 @@ class CoursesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Courses  $courses
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Courses $courses
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Courses $courses)
@@ -79,8 +87,8 @@ class CoursesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Courses  $courses
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Courses $courses
+     * @return \Illuminate\Http\RedirectResponse
      */
     // public function destroy(Courses $courses)
     // {
@@ -88,17 +96,8 @@ class CoursesController extends Controller
     // }
     public function destroy($id)
     {
-        $method_route_courses = 'index';
         $model = new Courses();
         $res = $model->Xoa($id);
-
-        if ($res == null) {
-            # code...
-            redirect()->route($method_route_courses);
-        } elseif ($res > 0) {
-            Session::flash('success', 'Xóa thành công danh mục');
-
-            return   redirect()->route($method_route_courses);
-        } 
+        return redirect()->back();
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chapters;
+use App\Models\Courses;
 use App\Models\Lessons;
 use Illuminate\Http\Request;
 
@@ -15,6 +17,9 @@ class LessonsController extends Controller
     public function index()
     {
         //
+        $this->v['lessons'] = Courses::where('status','!=' ,0)->get();
+
+        return view('lessons.index', $this->v);
     }
 
     /**
@@ -76,10 +81,12 @@ class LessonsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Lessons  $lessons
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Lessons $lessons)
+    public function destroy($id)
     {
-        //
+        $model = new Lessons();
+        $res = $model->Xoa($id);
+        return redirect()->back();
     }
 }
