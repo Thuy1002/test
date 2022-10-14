@@ -15,10 +15,9 @@ class CoursesController extends Controller
     public function index()
     {
         //
-        $courses = Courses::latest()->paginate(5);
+        $courses = Courses::latest()->get();
 
-        return view('courses.index',compact('courses'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('courses.index',compact('courses'));
     }
 
     /**
