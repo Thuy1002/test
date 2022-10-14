@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Courses;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CoursesController extends Controller
 {
@@ -81,8 +82,23 @@ class CoursesController extends Controller
      * @param  \App\Models\Courses  $courses
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Courses $courses)
+    // public function destroy(Courses $courses)
+    // {
+    //     //
+    // }
+    public function destroy($id)
     {
-        //
+        $method_route_courses = 'index';
+        $model = new Courses();
+        $res = $model->Xoa($id);
+
+        if ($res == null) {
+            # code...
+            redirect()->route($method_route_courses);
+        } elseif ($res > 0) {
+            Session::flash('success', 'Xóa thành công danh mục');
+
+            return   redirect()->route($method_route_courses);
+        } 
     }
 }
