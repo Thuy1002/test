@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Route::resource('/courses', CoursesController::class);
-Route::get('/courses', 'CoursesController@index');
+Route::get('/courses', 'CoursesController@index')->name('index');
+Route::get('/courses/delete/{id}', 'CoursesController@destroy')->name('xoa');
