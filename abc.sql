@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 14, 2022 lúc 11:36 AM
+-- Thời gian đã tạo: Th10 14, 2022 lúc 11:42 AM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.1.10
 
@@ -31,16 +31,18 @@ CREATE TABLE `chapters` (
   `id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `order` int(11) NOT NULL,
-  `id_courses` int(11) NOT NULL
+  `id_courses` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `chapters`
 --
 
-INSERT INTO `chapters` (`id`, `title`, `order`, `id_courses`) VALUES
-(1, 'ccoco', 1, 1),
-(2, 'h', 1, 3);
+INSERT INTO `chapters` (`id`, `title`, `order`, `id_courses`, `created_at`, `updated_at`) VALUES
+(1, 'ccoco', 1, 1, '2022-10-14 09:40:21', '2022-10-14 09:40:50'),
+(2, 'h', 2, 3, '2022-10-14 09:40:21', '2022-10-14 09:40:50');
 
 -- --------------------------------------------------------
 
@@ -101,7 +103,9 @@ CREATE TABLE `lessons` (
   `attachment` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `guard` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   `order` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `id_chuonghoc` int(11) NOT NULL
+  `id_chuonghoc` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
