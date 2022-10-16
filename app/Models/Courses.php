@@ -17,6 +17,13 @@ class Courses extends Model
         'title', 'content', 'price', 'discount', 'img', 'video', 'view', 'status'
     ];
 
+    
+  public function Courses() //show danh sách
+  {
+    $query = DB::table($this->table)->where('status','!=' ,0)->get();
+    return $query;
+  }
+
     public function Xoa($id)
     {
         $id_chap = DB::table('chapters')->select(['id'])->where('id_courses', $id)->get();

@@ -30,7 +30,7 @@
                         <input type="hidden" name="_method" value="DELETE">
                         <button class="btn btn-danger">Xóa</button>
                     </form>
-                    <a href="" class="btn btn-success">Update</a></th>
+                    <a href="{{route('chapters.edit',$a->id)}}" class="btn btn-success">Update</a></th>
             </tr>
             </tbody>
         @endforeach

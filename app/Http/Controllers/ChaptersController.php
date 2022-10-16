@@ -37,6 +37,11 @@ class ChaptersController extends Controller
     public function create()
     {
         //
+     
+           $courses = new Courses();
+           $this->v['courses'] = $courses->Courses();
+            return view('chapters.add', $this->v);
+       
     }
 
     /**
@@ -47,8 +52,14 @@ class ChaptersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $courses = new Courses();
+        $this->v['courses'] = $courses->Courses();
+        $chapters = new Chapters();
+        $chapters->fill($request->all());
+        $chapters->save();
+        return redirect()->route('chapters.index');
     }
+
 
     /**
      * Display the specified resource.
@@ -67,9 +78,14 @@ class ChaptersController extends Controller
      * @param  \App\Models\Chapters  $chapters
      * @return \Illuminate\Http\Response
      */
-    public function edit(Chapters $chapters)
+    public function edit(Chapters $chapters,$id)
     {
-        //
+        $courses = new Courses();
+        $this->v['courses'] = $courses->Courses();
+        $chapters = Chapters::find($id);
+        return view('chapters.edit',[
+            'chapters'=>$chapters
+        ],$this->v);
     }
 
     /**
@@ -79,9 +95,14 @@ class ChaptersController extends Controller
      * @param  \App\Models\Chapters  $chapters
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Chapters $chapters)
+    public function update(Request $request, Chapters $chapters,$id)
     {
-        //
+     
+        $chapters = Chapters::find($id);
+        $chapters->fill($request->except(['_method', '_token']));
+        $chapters->update();
+        return redirect()->route('chapters.index');
+
     }
 
     /**

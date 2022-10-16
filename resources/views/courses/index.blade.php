@@ -25,7 +25,7 @@
                 <th>{{ $a->content }}</th>
                 <th>{{ $a->price }}</th>
                 <th>{{ $a->discount }}</th>
-                <th><img style="    width: 100px;" src=" {{ $a->img }}" alt=""></th>
+                <th><img style="    width: 100px;" src=" {{ asset('images/'.$a->img) }}" alt=""></th>
                 <th><a href="">{{ $a->video }}</a></th>
                 {{-- <th>{{ $a->view }}</th>
                 <th>{{ $a->status }}</th> --}}
@@ -35,7 +35,8 @@
                         <input type="hidden" name="_method" value="DELETE">
                         <button class="btn btn-danger">Xóa</button>
                     </form>
-                    <a href="" class="btn btn-success">Update</a></th>
+
+                    <a href="{{route('courses.edit',$a->id)}}" class="btn btn-success">Update</a></th>
             </tr>
             </tbody>
         @endforeach
