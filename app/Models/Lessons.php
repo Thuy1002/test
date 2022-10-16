@@ -13,8 +13,13 @@ class Lessons extends Model
 
     protected $table = 'lessons';
     protected $fillable = [
-        'title', 'content', 'price', 'discount', 'img', 'video', 'view', 'status'
+        'title', 'content', 'video_part', 'lession_type', 'attachment', 'guard', 'order', 'status','id_chapters'
     ];
+    public function Lessons() //show danh sách
+    {
+      $query = DB::table($this->table)->where('status','!=' ,0)->get();
+      return $query;
+    }
 
     public function Xoa($id)
     {

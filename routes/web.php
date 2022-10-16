@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\ChaptersController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\LessonsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,7 @@ Route::get('/', function () {
 });
 Route::resource('/courses', CoursesController::class);
 Route::resource('/chapters', ChaptersController::class);
+Route::resource('/lessons', LessonsController::class);
 
 
 //Route::get('/courses', 'CoursesController@index')->name('index');

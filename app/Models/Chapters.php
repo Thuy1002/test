@@ -15,6 +15,12 @@ class Chapters extends Model
         'title', 'order', 'id_courses', 'status'
     ];
 
+    public function Chapters() //show danh sách
+  {
+    $query = DB::table($this->table)->where('status','!=' ,0)->get();
+    return $query;
+  }
+
     public function Xoa($id)
     {
         $id_chap = DB::table('lessons')->select(['id'])->where('id_chuonghoc', $id)->get();

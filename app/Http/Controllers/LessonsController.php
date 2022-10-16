@@ -17,7 +17,7 @@ class LessonsController extends Controller
     public function index()
     {
         //
-        $this->v['lessons'] = Courses::where('status','!=' ,0)->get();
+        $this->v['lessons'] = Lessons::where('status','!=' ,0)->get();
 
         return view('lessons.index', $this->v);
     }
@@ -29,7 +29,12 @@ class LessonsController extends Controller
      */
     public function create()
     {
-        //
+      
+     
+           $chapter = new Chapters();
+           $this->v['chapter'] = $chapter->Chapters();
+            return view('lessons.add', $this->v);
+       
     }
 
     /**
@@ -41,6 +46,12 @@ class LessonsController extends Controller
     public function store(Request $request)
     {
         //
+        $chapter = new Chapters();
+        $this->v['chapter'] = $chapter->Chapters();
+        $chapters = new Lessons();
+        $chapters->fill($request->all());
+        $chapters->save();
+        return redirect()->route('lessons.index');
     }
 
     /**
@@ -60,9 +71,15 @@ class LessonsController extends Controller
      * @param  \App\Models\Lessons  $lessons
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lessons $lessons)
+    public function edit(Lessons $lessons,$id)
     {
         //
+        $chapter = new Chapters();
+        $this->v['chapter'] = $chapter->Chapters();
+        $lessons = Lessons::find($id);
+        return view('lessons.edit',[
+            'lessons'=>$lessons
+        ],$this->v);
     }
 
     /**
@@ -72,9 +89,14 @@ class LessonsController extends Controller
      * @param  \App\Models\Lessons  $lessons
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lessons $lessons)
+    public function update(Request $request, Lessons $lessons,$id)
     {
         //
+        $lessons = Lessons::find($id);
+        $lessons->fill($request->except(['_method', '_token']));
+        $lessons->update();
+        return redirect()->route('lessons.index');
+
     }
 
     /**
