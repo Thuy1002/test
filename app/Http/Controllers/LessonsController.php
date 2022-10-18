@@ -60,9 +60,12 @@ class LessonsController extends Controller
      * @param  \App\Models\Lessons  $lessons
      * @return \Illuminate\Http\Response
      */
-    public function show(Lessons $lessons)
+    public function show(Lessons $lessons,$id)
     {
-        //
+        $lessons = Lessons::find($id);
+        return view('lessons.show',[
+            'lessons'=>$lessons
+        ]);
     }
 
     /**
