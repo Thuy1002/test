@@ -1,7 +1,9 @@
 <?php
+
 use App\Http\Controllers\ChaptersController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\LessonsController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,13 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::resource('/courses', CoursesController::class);
-Route::resource('/chapters', ChaptersController::class);
-Route::resource('/lessons', LessonsController::class);
-
 
 //Route::get('/courses', 'CoursesController@index')->name('index');
 //Route::get('/courses/delete/{id}', 'CoursesController@destroy')->name('xoa');
+Route::get('/login', ['as'=>'login','uses'=>'Auth\LoginController@getLogin']); 
+Route::post('/login', ['as'=>'login','uses'=>'Auth\LoginController@postLogin']); 
+Route::get('/logout', ['as'=>'logout','uses'=>'Auth\LoginController@getlogout']); 
+  
+      
+Route::middleware(['auth'])->group(function(){
+    Route::get('/', 'CoursesController@home');
+    Route::resource('/courses', CoursesController::class);
+    Route::resource('/chapters', ChaptersController::class);
+    Route::resource('/lessons', LessonsController::class);
+
+});

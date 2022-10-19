@@ -33,4 +33,8 @@ return new class extends Migration
     {
         Schema::dropIfExists('users');
     }
+    public function setPasswordAttribute($value)
+{
+   $this->attributes['password'] = bcrypt($value);
+}
 };

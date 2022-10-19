@@ -28,6 +28,13 @@ class CoursesController extends Controller
 
         return view('courses.index', $this->v);
     }
+    public function home()
+    {
+        //
+       
+
+        return view('layouts.master');
+    }
 
     /**
      * Show the form for creating a new resource.

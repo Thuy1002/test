@@ -121,7 +121,7 @@
                 </div>
                 <!--end::Brand-->
                 <!--begin::Aside Menu-->
-                @include('layouts.admin.sidebar')
+                @include('layouts.sidebar')
                 <!--end::Aside Menu-->
             </div>
             <!--end::Aside-->
@@ -134,7 +134,7 @@
                         <div class="bounce3"></div>
                     </div>
                 </div>
-                @include('layouts.admin.header')
+                @include('layouts.header')
 
                 <!--begin::Content-->
                 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -176,7 +176,7 @@
                 </div>
                 <!--end::Content-->
 
-                @include('layouts.admin.footer')
+                @include('layouts.footer')
 
             </div>
             <!--end::Wrapper-->

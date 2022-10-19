@@ -1667,7 +1667,9 @@
                     <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
                         <span class="symbol-label font-size-h5 font-weight-bold">S</span>
                     </span>
+                
                 </div>
+               
             </div>
             <!--end::User-->
         </div>
