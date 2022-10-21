@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', ['as'=>'login','uses'=>'Auth\LoginController@getLogin']); 
 Route::post('/login', ['as'=>'login','uses'=>'Auth\LoginController@postLogin']); 
 Route::get('/logout', ['as'=>'logout','uses'=>'Auth\LoginController@getlogout']); 
+Route::get('/signup',['as'=>'signup','uses'=>'Auth\LoginController@getSignup']);
+Route::post('/signup',['as'=>'signup','uses'=>'Auth\LoginController@postSignup']);
   
       
 Route::middleware(['auth'])->group(function(){

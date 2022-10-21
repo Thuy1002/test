@@ -116,11 +116,7 @@
           <span class="text-danger">{{ $errors->first('email') }}</span>
         @endif --}}
                 <input name="password" type="password" placeholder="Mật khẩu" class="input pass" />
-                <div  style="    " class="text-center">
-                    <input checked type="checkbox" name="trang_thai" value="0" placeholder="" class="" /> <label for="">
-                        Đồng ý với mọi điều khoản </label>
-                      
-                </div>
+               
                 {{-- @if ($errors->has('password'))
           <span class="text-danger">{{ $errors->first('password') }}</span>
         @endif --}}

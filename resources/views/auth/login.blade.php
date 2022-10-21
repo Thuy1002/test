@@ -7,7 +7,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{ asset('default/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
+    {{-- <link rel="stylesheet" href="{{ asset('default/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('default/bower_components/font-awesome/css/font-awesome.min.css')}}">
     <!-- Ionicons -->
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('default/dist/css/AdminLTE.min.css')}}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('default/plugins/iCheck/square/blue.css')}}">
-    <link rel="stylesheet" href="{{ asset('default/dist/css/spx.css')}}">
+    <link rel="stylesheet" href="{{ asset('default/dist/css/spx.css')}}"> --}}
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -31,49 +31,7 @@
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <!--[if IE]>
-    <style>
-        .login-box-body{
-            border: 1px solid #ddd;
-        }
-    </style>
-    <![endif]-->
-    <style>
-        .login-page{
-            background: #fff;
-        }
-        .logo-login{
-            text-align: center;
-        }
-        .login-box-msg{
-            text-align: center;
-            margin-top:10px;
-            font-weight: bold;
-        }
-        .login-box-body{
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            box-shadow: 0 1px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
-        }
-        .login-logo{
-            /*margin-top: 50px;*/
-            background: #2CADAD;
-            margin-bottom: 0;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            box-shadow: 0 1px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
-        }
-        .login-box{
-            padding-top:50px;
-        }
-        .btn-login{
-            background: #2CADAD;
-            color: #fff;
-        }
-        .btn-login:hover{
-            background: #2CADAD;
-            color:#fff;
-        }
-    </style>
+  
 </head>
 <body class="hold-transition login-page">
 {{-- @if(Auth::user())

@@ -33,16 +33,6 @@
                 <th>{{ $lessons->guard }}</th>
                 <th>{{ $lessons->order }}</th>
                 <th>  {{  DB::table('chapters')->where('id','=',$lessons->id_chapters)->first()->title}}</th>
-                {{-- <th>{{ $a->view }}</th>
-                <th>{{ $a->status }}</th> --}}
-                {{-- <th style="display: flex">
-                    <form action="{{url('lessons/'.$a->id)}}" method="post">
-                        @csrf
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button class="btn btn-danger">Xóa</button>
-                    </form>
-                    <a href="{{route('lessons.edit',$a->id)}}" class="btn btn-success">Update</a></th>
-            </tr> --}}
             </tbody>
 
     </table>
