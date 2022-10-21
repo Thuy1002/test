@@ -4,39 +4,134 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
-    <!-- Tell the browser to be responsive to screen width -->
+    
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    {{-- <link rel="stylesheet" href="{{ asset('default/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('default/bower_components/font-awesome/css/font-awesome.min.css')}}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="{{ asset('default/bower_components/Ionicons/css/ionicons.min.css')}}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('default/dist/css/AdminLTE.min.css')}}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset('default/plugins/iCheck/square/blue.css')}}">
-    <link rel="stylesheet" href="{{ asset('default/dist/css/spx.css')}}"> --}}
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+   
     <![endif]-->
 
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <!--[if IE]>
+    
   
 </head>
 <body class="hold-transition login-page">
 {{-- @if(Auth::user())
     <script>window.location.href='/';</script>
 @endif --}}
+<style>
+    *{
+        width: 340px;
+    margin: auto;
+}
+    
+    ::selection {
+        background-color: #b5e2e7;
+    }
+
+    ::-moz-selection {
+        background-color: #8ac7d8;
+    }
+
+    body {
+        background: #3CC;
+    }
+
+    .container {
+        display: -webkit-flex;
+        display: flex;
+        height: 100%;
+    }
+
+    #logbox {
+        padding: 10px;
+        margin: 50px auto;
+        width: 340px;
+        background-color: #fff;
+        -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 175%;
+        color: #757575;
+        font-weight: 300;
+    }
+
+    h1,
+    input {
+        font-family: "Open Sans", Helvetica, sans-serif;
+    }
+
+    .input {
+        width: 75%;
+        height: 50px;
+        display: block;
+        margin: 0 auto 15px;
+        padding: 0 15px;
+        border: none;
+        border-bottom: 2px solid #ebebeb;
+    }
+
+    .input:focus {
+        outline: none;
+        border-bottom-color: #3CC !important;
+    }
+
+    .input:hover {
+        border-bottom-color: #dcdcdc;
+    }
+
+    .input:invalid {
+        box-shadow: none;
+    }
+
+    .pass:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px white inset;
+    }
+
+    .inputButton {
+        position: relative;
+        width: 85%;
+        height: 50px;
+        display: block;
+        margin: 30px auto 30px;
+        color: white;
+        background-color: #3CC;
+        border: none;
+        -webkit-box-shadow: 0 5px 0 #2CADAD;
+        -moz-box-shadow: 0 5px 0 #2CADAD;
+        box-shadow: 0 5px 0 #2CADAD;
+    }
+
+    .inputButton:hover {
+        top: 2px;
+        -webkit-box-shadow: 0 3px 0 #2CADAD;
+        -moz-box-shadow: 0 3px 0 #2CADAD;
+        box-shadow: 0 3px 0 #2CADAD;
+    }
+
+    .inputButton:active {
+        top: 5px;
+        box-shadow: none;
+    }
+
+    .inputButton:focus {
+        outline: none;
+    }
+</style>
 <div class="login-box">
     <div class="login-logo">
         <a href="/" style="text-transform: uppercase;font-size: 30px;color:#fff;"><b>Đăng nhập</b></a>
@@ -62,7 +157,7 @@
             {{--</div>--}}
             <!-- /.col -->
                 <div class="col-xs-12">
-                    <button type="submit" class="btn btn-block btn-flat text-center btn-login">Sign In</button>
+                    <button style="   margin-left: 15px;" type="submit" class="btn btn-block btn-flat  btn-login">Sign In</button>
                 </div>
                 <div class="text-center">
                     Bạn chưa có tài khoản? <a style="font-weight: 900;" href="/signup" id="signup_id">Đăng Ký</a>
@@ -71,7 +166,7 @@
                 <!-- /.col -->
             </div>
         </form>
-        <p class="text-danger login-box-msg">Vui lòng đăng nhập để tiếp tục!
+        <p class="text-danger text-center login-box-msg">Vui lòng đăng nhập để tiếp tục!
         <?php //Hiển thị thông báo thành công?>
         @if ( Session::has('success') )
             <div class="alert alert-success alert-dismissible" role="alert">
