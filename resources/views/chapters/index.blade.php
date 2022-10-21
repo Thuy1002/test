@@ -1,7 +1,7 @@
 @php
     use Illuminate\Support\Facades\DB;
 @endphp
-@extends('layouts.admin.master')
+@extends('layouts.master')
 @section('title',"Chương học")
 @section('title-heading', "Danh sách chương học")
 @section('content')

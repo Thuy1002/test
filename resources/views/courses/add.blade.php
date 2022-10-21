@@ -1,4 +1,4 @@
-@extends('layouts.admin.master')
+@extends('layouts.master')
 @section('title', 'khóa học')
 @section('title-heading', 'Thêm mới khóa học')
 @section('content')
