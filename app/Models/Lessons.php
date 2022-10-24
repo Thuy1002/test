@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\Comment;
 
 class Lessons extends Model
 {
@@ -25,5 +27,13 @@ class Lessons extends Model
     {
         $res = DB::table($this->table)->where('id', $id)->update(['status'=>0]);
         return 1;
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class,'id_user','id');
+    }
+
+    public function commentLessons(){
+        return $this->hasMany(Comment::class,'id_lesson','id');
     }
 }
