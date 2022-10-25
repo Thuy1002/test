@@ -13,7 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -44,9 +44,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-  
+
     public function taoTK($params){
-        $data = array_merge($params['cols'],[ //array_ có rồi thì cập nhật không có thì thêm 
+        $data = array_merge($params['cols'],[ //array_ có rồi thì cập nhật không có thì thêm
             'password'=>Hash::make($params['cols']['password']),
             'created_at'=>date('Y-m-d H:i:s'),
             'updated_at'=>date('Y-m-d H:i:s'),
