@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chapters;
+use App\Models\Comment;
 use App\Models\Courses;
 use App\Models\Lessons;
 use Illuminate\Http\Request;
@@ -62,6 +63,9 @@ class LessonsController extends Controller
      */
     public function show(Lessons $lessons,$id)
     {
+       
+        $lessons = Lessons::find($id);
+       
         $lessons = Lessons::find($id);
         return view('lessons.show',[
             'lessons'=>$lessons

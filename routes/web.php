@@ -27,15 +27,15 @@ Route::get('/logout', ['as'=>'logout','uses'=>'Auth\LoginController@getlogout'])
 Route::get('/signup',['as'=>'signup','uses'=>'Auth\LoginController@getSignup']);
 Route::post('/signup',['as'=>'signup','uses'=>'Auth\LoginController@postSignup']);
 
-Route::post('/store', [CommentLessonController::class, 'store'])->name('store');
-Route::get('/showcmt/{id_lesson}/{id}', [CommentLessonController::class, 'showcmt'])->name('showcmt');
-
-Route::post('/reply/{id_comment}', [CommentLessonController::class, 'reply'])->name('reply');
-
 Route::middleware(['auth'])->group(function(){
     Route::get('/', 'CoursesController@home');
     Route::resource('/courses', CoursesController::class);
     Route::resource('/chapters', ChaptersController::class);
     Route::resource('/lessons', LessonsController::class);
-
+    Route::post('/store', [CommentLessonController::class, 'store'])->name('store');
+    Route::get('/showcmt/{id_lesson}/{id}', [CommentLessonController::class, 'showcmt'])->name('showcmt');
+    
+    Route::post('/reply/{id_comment}', [CommentLessonController::class, 'reply'])->name('reply');
+    Route::get('/comment/delete/{id}', 'CommentLessonController@destroy')->name('xoa');
+    
 });
