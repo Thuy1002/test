@@ -47,19 +47,20 @@
                 <div class="col-md-12 col-lg-10 col-xl-8">
                     <h1 class="block text-xl font-semibold mb-6"> Bình luận ({{count($cmt)}}) </h1>
                     <div class="space-y-5">
-            
+
                         <div class="flex gap-x-4 relative rounded-md">
                             @foreach ($cmt as $item)
-                               
+
                                 <div>
                                     <h4 class="text-base m-0 font-semibold">  {{ DB::table('users')->where('id', '=', $item->id_user)->first()->name }}</h4>
                                     <span class="text-gray-700 text-sm">  {{ $item->created_at }}</span>
                                     <p class="mt-3 md:ml-0 -ml-16">
                                         {{ $item->comment }}
                                     </p> <a href="#" class="bg-gray-100 py-1.5 px-4 rounded-full absolute right-5 top-0">Replay</a>
-                                    <a href="{{ route('xoa',[$item->id]) }}"> XÓa</a> 
                                 </div>
-                                
+                                @if(Illuminate\Support\Facades\Auth::id()  == $item->id_user)
+                                <a href="{{ route('xoa',[$item->id]) }}"> XÓa</a>
+                                    @endif
                             @endforeach
                         </div>
                         <div class="flex justify-center mt-9">
@@ -123,7 +124,7 @@
             </div>
         </div>
     </section>
-   
 
-         
+
+
     @endsection

@@ -12,7 +12,7 @@ class ChaptersController extends Controller
 
     public function __construct()
     {
-        $this->v = [];
+        $this->v = []
     }
 
     /**
@@ -37,11 +37,11 @@ class ChaptersController extends Controller
     public function create()
     {
         //
-     
+
            $courses = new Courses();
            $this->v['courses'] = $courses->Courses();
             return view('chapters.add', $this->v);
-       
+
     }
 
     /**
@@ -97,7 +97,7 @@ class ChaptersController extends Controller
      */
     public function update(Request $request, Chapters $chapters,$id)
     {
-     
+
         $chapters = Chapters::find($id);
         $chapters->fill($request->except(['_method', '_token']));
         $chapters->update();
