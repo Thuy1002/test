@@ -28,7 +28,9 @@ Route::get('/signup',['as'=>'signup','uses'=>'Auth\LoginController@getSignup']);
 Route::post('/signup',['as'=>'signup','uses'=>'Auth\LoginController@postSignup']);
 
 Route::post('/store', [CommentLessonController::class, 'store'])->name('store');
+Route::get('/showcmt/{id_lesson}/{id}', [CommentLessonController::class, 'showcmt'])->name('showcmt');
 
+Route::post('/reply/{id_comment}', [CommentLessonController::class, 'reply'])->name('reply');
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/', 'CoursesController@home');

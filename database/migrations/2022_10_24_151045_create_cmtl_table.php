@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comment_lessons', function (Blueprint $table) {
+        Schema::create('cmtl', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user')->unsigned();
+            $table->integer('id_user');
 
-            $table->integer('id_lesson')->unsigned();
+            $table->integer('id_lesson');
             $table->text('comment');
-            $table->text('reply');
-            $table->string('status');
-
+            $table->integer('reply');
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comment_lessons');
+        Schema::dropIfExists('cmtl');
     }
 };

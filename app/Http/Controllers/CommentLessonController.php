@@ -18,21 +18,44 @@ class CommentLessonController extends Controller
             // if($validator->fails){
             //     return redirect()->back()->with('message', 'Comment area is mandetory');
             // }
-            $lesson= Lessons::where('id', $request->comment)->where('status', '1')->first();
+            $lesson= Lessons::where('id', $request->id_lesson)->first();
             if($lesson){
                 Comment::create([
                     'id_lesson'=> $lesson->id,
                     'id_user'=>Auth::user()->id,
                     'comment'=> $request->comment
                 ]);
+                // dd($lesson);
+                return redirect()->back();
             }
             else{
-                redirect()->back()->with('message', 'No such ');
+               return redirect()->back()->with('message', 'No such ');
             }
         }
         else
         {
-            redirect()->back()->with('message', 'Login');
+           return redirect()->back()->with('message', 'Login');
         }
+    }
+    public function showcmt($id_lesson, $id)
+    {
+        $lessons = Lessons::find($id);
+        $cmt= Comment::where('id_lesson', $id_lesson)->get();
+// dd($cmt);
+        return view('lessons.show', ['cmt'=>$cmt, 'lessons'=>$lessons]);
+    }
+
+    public function reply($id_comment, Request $request )
+    {
+        $lesson= Lessons::where('id', $request->id_lesson)->first();
+
+        $cmt = Comment::create([
+            'id_lesson'=> $lesson->id,
+            'id_user'=>Auth::user()->id,
+            'comment'=> $request->replycmt,
+            'reply'=> $id_comment
+        ]);
+        // dd($cmt);
+        return redirect()->back();
     }
 }
