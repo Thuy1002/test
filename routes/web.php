@@ -5,6 +5,7 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\LessonsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CommentLessonController;
+use App\Http\Controllers\VoteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,9 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/chapters', ChaptersController::class);
     Route::resource('/lessons', LessonsController::class);
     Route::post('/store', [CommentLessonController::class, 'store'])->name('store');
-    Route::get('/showcmt/{id_lesson}/{id}', [CommentLessonController::class, 'showcmt'])->name('showcmt');
+    Route::get('/detail-lesson/{id_lesson}/{id}', [CommentLessonController::class, 'showcmt'])->name('showcmt');
+   // Route::get('/detail-course/{id_course}/{id}', [VoteController::class, 'detail'])->name('cmt_course');
+    Route::get('/detail-course/{id}', [VoteController::class, 'detail'])->name('cmt_course');
     
     Route::post('/reply/{id_comment}', [CommentLessonController::class, 'reply'])->name('reply');
     Route::get('/comment/delete/{id}', 'CommentLessonController@destroy')->name('xoa');
