@@ -70,10 +70,15 @@ class CoursesController extends Controller
      * @param \App\Models\Courses $courses
      * @return \Illuminate\Http\Response
      */
-    public function show(Courses $courses)
-    {
-        //
-    }
+    // public function show(Courses $courses,$id)
+    // {
+      
+    //         $course = Courses::find($id);
+    //         // $cmt= Vote::where('id_course', $id_course)->get();
+    // // dd($cmt);
+    //         return view('courses.show', [ 'course'=>$course]);
+        
+    // }
 
     /**
      * Show the form for editing the specified resource.

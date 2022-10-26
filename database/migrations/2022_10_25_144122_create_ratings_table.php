@@ -21,6 +21,7 @@ class CreateRatingsTable extends Migration
             // $table->index('rateable_type')->nullable();
             $table->integer('id_user');
             $table->integer('id_course');
+            // $table->integer('status');
             // $table->foreign('user_id')->references('id')->on('users');
         });
     }
