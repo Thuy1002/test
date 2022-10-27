@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class abController extends Controller
 {
+    func_get_arg;
     //
     j
 }
