@@ -38,7 +38,7 @@ class CommentLessonController extends Controller
     public function showcmt($id_lesson, $id)
     {
         $lessons = Lessons::find($id);
-        $cmt = Comment::where('id_lesson', $id_lesson)->where('status', '!=', 1)->get();
+        $cmt = Comment::where('id_lesson', $id_lesson)->where('status', '!=', 0)->get();
         // dd($cmt);
         return view('lessons.show', ['cmt' => $cmt, 'lessons' => $lessons]);
     }
